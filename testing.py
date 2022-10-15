@@ -1,4 +1,7 @@
 import unittest
+from ArtificialFactory import ArtificialsFactory
+from HumanFactory import HumanFactory
+from cliente import Client
 from enums import *
 import enums
 from weakness import Debilidades
@@ -101,5 +104,22 @@ class TestArmas(unittest.TestCase):
     def test_personalidad_descrip(self):
         self.assertEqual(self.inteligente.getDescription(), "Es inteligente")
 
-if __name__ == "__main__":
+
+"""
+class Testfactories(unittest.TestCase):
+
+    human = {'name':"Steve Rogers", 'hp':100,'stamina':100,'strength': 50,'speed': 120,'armor':100,'mana': 100,'status': Estado.VIVO, 'humanStatus':HumanStatus.MILLONARIO,'sex': Sexo.MAN}
+    dict_alien = {'name':"Xeno",'hp': 500,'stamina': 200,'strength': 200,'speed': 30,'armor':10,'mana': 10,'status': Estado.VIVO,'RaceAlien': TypeAlienigena.XENOMORFOS}
+    dict_artif = {'name':'18', 'hp': 500,'stamina': 200,'strength': 200,'speed': 30,'armor':200, 'mana':0, 'status': Estado.VIVO, 'RangeArtificial': TypeArticial.mac_1, 'Laboratory': Laboratorio.LAB_X10}
+    dict_superh = {'name' :"Barry Allen",'hp': 500,'stamina': 500,'strength': 500,'speed': 500,'armor': 500,'mana': 100,'status': Estado.VIVO,'shclass': SuperHuman.SUPERFUERTE}
+
+    cliente = Client(ArtificialsFactory())
+
+    daien = cliente.buildProduct(HumanFactory(), **human)
+
+    def test_humanfactory_instance(self):
+        
+        self.assertIsInstance(self.daien,Humano, "Its instance!")
+"""
+if __name__ == '__main__':
     unittest.main()
