@@ -7,15 +7,7 @@ class Armas(Caracterizacion):
     __municion: int
     __cargador: int
     __capacidadCargador: int
-    def __init__(self, name,damage, municion, cargador, capacidadCargador):
-        super().__init__(name)
-        self.__damage = damage
-        self.__capacidadCargador = capacidadCargador
-        if  cargador <= self.__capacidadCargador:
-            self.__cargador = cargador
-        else: 
-            raise TypeError("El cargador no puede ser mayor que la capacidad maxima")
-        self.__municion = municion
+    
     
     def recargar(self)->bool:
         if self.__municion == 0: 
