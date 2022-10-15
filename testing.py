@@ -1,6 +1,8 @@
 import unittest
+from AliensFactory import AliensFactory
 from ArtificialFactory import ArtificialsFactory
 from HumanFactory import HumanFactory
+from SuperHumanFactory import SuperHumansFactory
 from cliente import Client
 from enums import *
 import enums
@@ -17,11 +19,16 @@ from superhuman import SuperHumanos
 class TestPersonaje(unittest.TestCase):
     print("Entrando a desarrollo de tests")
     # PERSONAJES PARA TESTEAR
-    Xeno = Aliens("Xeno", 450, 300, 400, 230, 210, 410, Estado.VIVO, TypeAlienigena.DEPREDATORS)
-    Androide18 = Artificiales("18", 800, 150, 300, 70, 200, TypeArticial.mac_2, Laboratorio.LAB_X11)
-    Captain_America = Humano("Steve Rogers", 100, 100, 50, 120, 100, 100, Estado.VIVO, HumanStatus.SUPER_SOLDADO, Sexo.MAN)
+    dict_humano = {'name':"Juan", 'hp':100,'stamina':100,'strength': 50,'speed': 120,'armor':100,'mana': 100,'status': Estado.VIVO, 'humanStatus':HumanStatus.SUPER_SOLDADO,'sex': Sexo.MAN}
+    dict_alien = {'name':"Zeus",'hp': 500,'stamina': 200,'strength': 200,'speed': 30,'armor':10,'mana': 10,'status': Estado.VIVO,'RaceAlien': TypeAlienigena.XENOMORFOS}
+    dict_artif = {'name':'Profi', 'hp': 500,'stamina': 200,'strength': 200,'speed': 30,'armor':200, 'mana':0, 'status': Estado.VIVO, 'RangeArtificial': TypeArticial.mac_1, 'Laboratory': Laboratorio.LAB_X10}
+    dict_superh = {'name' :"Maria",'hp': 500,'stamina': 500,'strength': 500,'speed': 500,'armor': 500,'mana': 100,'status': Estado.VIVO,'shclass': SuperHuman.VELOCISTA}
     
-    Flash = SuperHumanos("Barry Allen", 500, 500, 500,500,500, 100, Estado.VIVO,SuperHuman.VELOCISTA)
+    Xeno = Aliens(**dict_alien)
+    Androide18 = Artificiales(**dict_artif)
+    Captain_America =Humano(**dict_humano)
+    
+    Flash = SuperHumanos(**dict_superh)
 
 
     # Caracterizacion para Testear
@@ -105,21 +112,36 @@ class TestArmas(unittest.TestCase):
         self.assertEqual(self.inteligente.getDescription(), "Es inteligente")
 
 
-"""
+
 class Testfactories(unittest.TestCase):
 
     human = {'name':"Steve Rogers", 'hp':100,'stamina':100,'strength': 50,'speed': 120,'armor':100,'mana': 100,'status': Estado.VIVO, 'humanStatus':HumanStatus.MILLONARIO,'sex': Sexo.MAN}
-    dict_alien = {'name':"Xeno",'hp': 500,'stamina': 200,'strength': 200,'speed': 30,'armor':10,'mana': 10,'status': Estado.VIVO,'RaceAlien': TypeAlienigena.XENOMORFOS}
-    dict_artif = {'name':'18', 'hp': 500,'stamina': 200,'strength': 200,'speed': 30,'armor':200, 'mana':0, 'status': Estado.VIVO, 'RangeArtificial': TypeArticial.mac_1, 'Laboratory': Laboratorio.LAB_X10}
-    dict_superh = {'name' :"Barry Allen",'hp': 500,'stamina': 500,'strength': 500,'speed': 500,'armor': 500,'mana': 100,'status': Estado.VIVO,'shclass': SuperHuman.SUPERFUERTE}
+    alien = {'name':"Xeno",'hp': 500,'stamina': 200,'strength': 200,'speed': 30,'armor':10,'mana': 10,'status': Estado.VIVO,'RaceAlien': TypeAlienigena.XENOMORFOS}
+    artificial = {'name':'18', 'hp': 500,'stamina': 200,'strength': 200,'speed': 30,'armor':200, 'mana':0, 'status': Estado.VIVO, 'RangeArtificial': TypeArticial.mac_1, 'Laboratory': Laboratorio.LAB_X10}
+    superhuman = {'name' :"Barry Allen",'hp': 500,'stamina': 500,'strength': 500,'speed': 500,'armor': 500,'mana': 100,'status': Estado.VIVO,'shclass': SuperHuman.SUPERFUERTE}
 
-    cliente = Client(ArtificialsFactory())
+    cliente = Client(HumanFactory())
+    cliente2 = Client(AliensFactory())
+    cliente3 = Client(ArtificialsFactory())
+    cliente4 = Client(SuperHumansFactory())
 
     daien = cliente.buildProduct(HumanFactory(), **human)
+    daien2 = cliente2.buildProduct(AliensFactory(), **alien)
+    daien3 = cliente3.buildProduct(ArtificialsFactory(), **artificial)
+    daien4 = cliente4.buildProduct(SuperHumansFactory(), **superhuman)
+
 
     def test_humanfactory_instance(self):
         
         self.assertIsInstance(self.daien,Humano, "Its instance!")
-"""
+    def test_Alienfactory_instance(self):
+        
+        self.assertIsInstance(self.daien2,Aliens, "Its instance!")
+    def test_Artificialfactory_instance(self):
+        
+        self.assertIsInstance(self.daien3,Artificiales, "Its instance!")
+    def test_SuperHumanfactory_instance(self):
+        
+        self.assertIsInstance(self.daien4,SuperHumanos, "Its instance!")    
 if __name__ == '__main__':
     unittest.main()

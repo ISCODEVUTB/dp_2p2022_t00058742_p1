@@ -19,18 +19,18 @@ class Personaje(IFicha, ABC):
     __caracterizacion: List
     _estado: Estado
 
-    def __init__(self,  name, life, energy, strong, velocity, armor,hidden_power, estado, caracterizacion=[], enemigo=None, liga=None):
+    def __init__(self, caracterizacion=[], enemy=None, ligue=None,**kwargs):
        
-        self._name = name
-        self.__life = life
-        self._hidden_power = hidden_power
-        self._energy = energy
-        self.__strong = strong
-        self._velocity = velocity
-        self._armor = armor
-        self.__enemigo = enemigo
-        self.__liga = liga
-        self._estado = estado
+        self.__name = kwargs['name']
+        self.__hp = kwargs['hp']
+        self.__mana = kwargs['mana']
+        self.__stamina = kwargs['stamina']
+        self.__strength = kwargs['strength']
+        self.__speed = kwargs['speed']
+        self.__armor = kwargs['armor']
+        self.__enemy = enemy
+        self.__ligue = ligue
+        self.__status = kwargs['status']
         self.__caracterizacion = caracterizacion
 
     

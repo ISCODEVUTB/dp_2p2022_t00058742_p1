@@ -3,16 +3,16 @@ from characters import Personaje
 from enums import Laboratorio, TypeArticial
 
 class Artificiales(Personaje):
-    __RangoArtificial: TypeArticial
-    __Laboratorio: Laboratorio
-    def __init__(self,nombre, vida, estamina, fuerza, velocidad, armadura, RangoArtificial, Laboratorio, caracterizacion=[], enemigo=None, liga=None):
-        super().__init__(nombre, vida, estamina, fuerza, velocidad, armadura, caracterizacion, enemigo, liga)
+    __RangeArtificial: TypeArticial
+    __Laboratory: Laboratorio
+    def __init__(self, caracterizacion=[], enemy=None, ligue=None,**kwargs):
+        super().__init__( caracterizacion, enemy, ligue, **kwargs)
         "Inicializador de Persojane, nombre: str, vida: float, estamina: float, fuerza: float, velocidad: float, armadura: float, caracterizacion: list of objects, enemigo: Personaje[defaul->none] liga: str"
-        self.__RangoArtificial = RangoArtificial
-        self.__Laboratorio = Laboratorio
+        self.__RangeArtificial = kwargs['RangeArtificial']
+        self.__Laboratory = kwargs['Laboratory']
 
     def getRangoArtificial(self):
-        return self.__RangoArtificial
+        return self.__RangeArtificial
     def getLaboratorio(self):
-        return self.__Laboratorio
+        return self.__Laboratory
     

@@ -1,17 +1,16 @@
 from characters import Personaje
 from enums import HumanStatus, Sexo
-
 class Humano(Personaje):
     __HumanStatus: HumanStatus
-    __Sexo: Sexo
+    __Sex: Sexo
 
-    def __init__(self,  nombre, vida, estamina, fuerza, velocidad, armadura,mana, estado, HumanStatus, sexo, caracterizacion=[], enemigo=None, liga=None):
+    def __init__(self, caracterizacion=[], enemy=None, ligue=None, **kwargs):
         "Instanciar un humano para agregarlo al juego, puedes agregarle caracteristicas"
-        super().__init__(nombre, vida, estamina, fuerza, velocidad, armadura,mana, estado, caracterizacion, enemigo, liga)
-        self.__HumanStatus = HumanStatus
-        self.__Sexo = sexo
+        super().__init__(caracterizacion, enemy, ligue, **kwargs)
+        self.__HumanStatus = kwargs['humanStatus']
+        self.__Sex = kwargs['sex']
 
     def getHumanStatus(self):
         return self.__HumanStatus.name
     def getSexo(self):
-        return self.__Sexo.name
+        return self.__Sex.name

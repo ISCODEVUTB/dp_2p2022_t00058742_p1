@@ -3,14 +3,13 @@ from Ificha import IFicha
 from enums import TypeAlienigena
 
 class Aliens(Personaje):
-    __TypeAlienigena: TypeAlienigena
+    __RaceAlien: TypeAlienigena
 
-    def __init__(self,  name, life, energy, strong, velocity, armor, estado, TypeAlien, caracterizacion=[], enemigo=None, liga=None):
-        
-        super().__init__(name, life, energy, strong, velocity, armor, estado,caracterizacion, enemigo, liga)
-        
-        self.__TypeAlienigena = TypeAlien
+    def __init__(self, caracterizacion=[], enemigo=None, liga=None, **kwargs):
+        super().__init__(caracterizacion, enemigo, liga, **kwargs)
+        self.__RaceAlien = kwargs['RaceAlien']
 
-    def getTypeAlien(self):
-        return self.__TypeAlienigena.name
+    def getRazaAlien(self):
+        return self.__RaceAlien.name
+    
     
