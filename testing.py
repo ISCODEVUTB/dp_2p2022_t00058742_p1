@@ -12,7 +12,7 @@ from human import Humano
 from superhuman import SuperHumanos
 
 class TestPersonaje(unittest.TestCase):
-    
+    print("Entrando a desarrollo de tests")
     # PERSONAJES PARA TESTEAR
     Xeno = Aliens("Xeno", 450, 300, 400, 230, 210, 410, Estado.VIVO, TypeAlienigena.DEPREDATORS)
     Androide18 = Artificiales("18", 800, 150, 300, 70, 200, TypeArticial.mac_2, Laboratorio.LAB_X11)
